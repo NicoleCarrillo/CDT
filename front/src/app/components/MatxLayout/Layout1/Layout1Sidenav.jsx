@@ -21,7 +21,7 @@ const useStyles = makeStyles(({ palette, ...theme }) => ({
         overflow: 'hidden',
         color: palette.text.primary,
         transition: 'all 250ms ease-in-out',
-        backgroundImage: `linear-gradient(to bottom, rgba(${primaryRGB}, 0.96), rgba(${primaryRGB}, 0.96)), url(${bgImgURL})`,
+        backgroundImage: `linear-gradient(to bottom, rgba(61,55,47, 0.96), rgba(61,55,47, 0.96)), url(${bgImgURL})`,
         '&:hover': {
             width: 'var(--sidenav-width)',
             '& .sidenavHoverShow': {

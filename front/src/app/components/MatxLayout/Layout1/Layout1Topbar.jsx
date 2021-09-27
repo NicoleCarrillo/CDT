@@ -18,7 +18,7 @@ const useStyles = makeStyles(({ palette, ...theme }) => ({
             'linear-gradient(180deg, rgba(255, 255, 255, 0.95) 44%, rgba(247, 247, 247, 0.4) 50%, rgba(255, 255, 255, 0))',
 
         '& .topbar-hold': {
-            backgroundColor: palette.primary.main,
+            backgroundColor: "#3D372F",
             height: 80,
             paddingLeft: 18,
             paddingRight: 20,
