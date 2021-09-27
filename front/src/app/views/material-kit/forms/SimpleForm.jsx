@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { ValidatorForm, TextValidator } from 'react-material-ui-form-validator'
+import { createTheme, ThemeProvider, withStyles } from '@material-ui/core/styles';
+import Brown from '@material-ui/core/colors/purple';
 import {
     Button,
     Icon,
@@ -7,7 +9,6 @@ import {
     Radio,
     RadioGroup,
     FormControlLabel,
-    Checkbox,
 } from '@material-ui/core'
 import {
     MuiPickersUtilsProvider,
@@ -23,6 +24,20 @@ import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 
 const SimpleForm = () => {
+
+    const theme = createTheme({
+        palette: {
+          primary: {
+            // Purple and green play nicely together.
+            main: '#616060',
+          },
+          secondary: {
+            // This is green.A700 as hex.
+            main: '#3D372F',
+          },
+        },
+      });
+      
 
     const [delito, setDelito] = React.useState('');
 
@@ -60,21 +75,24 @@ const SimpleForm = () => {
         })
     }
 
-    const handleChange2 = (event) => {
-        //event.persist()
-
-        setState({
-            ...state,
-            [event.target.name]: event.target.value,
-        })
-        if (event.target.value.match("")) {
-            alert("hey");
-        }
-    }
-
     const handleDateChange = (date) => {
         setState({ ...state, date })
     }
+
+    const ColorButton = withStyles((theme) => ({
+        root: {
+          color: "#ffffff",
+          fontSize: 12,
+          fontWeight:700,
+          width: 250,
+          marginBottom: 22,
+          marginTop: 12,
+          backgroundColor: "#3D372F",
+          '&:hover': {
+            backgroundColor:"#616060",
+          },
+        },
+      }))(Button);
 
     const {
         nombreSospechoso,
@@ -89,7 +107,7 @@ const SimpleForm = () => {
 
     return (
         <div>
-            <ValidatorForm onSubmit={handleSubmit} onError={() => null}>
+            <ValidatorForm onSubmit={handleSubmit} onError={() => null} >
                 <Grid container spacing={6}>
                     <Grid item lg={12} md={12} sm={12} xs={12}>
                         <FormControl style={{minWidth: 300, maxHeight: 100}} size="small">
@@ -231,10 +249,12 @@ const SimpleForm = () => {
                 </Grid>
             </ValidatorForm>
             <Box textAlign='center' marginTop='20px' marginBottom='10px'>
-                <Button color="primary" variant="contained" type="submit">
-                    <Icon>send</Icon>
-                    <span className="pl-2 capitalize">Denunciar</span>
-                </Button>
+                <ThemeProvider theme={theme}> 
+                    <ColorButton variant="contained" type="submit" >
+                        <Icon>send</Icon>
+                        <span className="pl-2 capitalize">Denunciar</span>
+                    </ColorButton>
+                </ThemeProvider>
             </Box>
         </div>
     )

@@ -5,7 +5,6 @@ import Scrollbar from 'react-perfect-scrollbar'
 import { renderRoutes } from 'react-router-config'
 import Layout1Topbar from './Layout1Topbar'
 import Layout1Sidenav from './Layout1Sidenav'
-import Footer from '../../Footer/Footer'
 import AppContext from 'app/contexts/AppContext'
 import { MatxSuspense } from 'app/components'
 import { useTheme } from '@material-ui/core/styles'
@@ -66,7 +65,7 @@ const Layout1 = () => {
         let { settings } = ref.current
         let sidebarMode = settings.layout1Settings.leftSidebar.mode
         if (settings.layout1Settings.leftSidebar.show) {
-            let mode = isMdScreen ? 'close' : sidebarMode
+            let mode = isMdScreen ? 'open' : sidebarMode
             updateSettings({ layout1Settings: { leftSidebar: { mode } } })
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -103,9 +102,6 @@ const Layout1 = () => {
                         <div className="relative flex-grow">
                             <MatxSuspense>{renderRoutes(routes)}</MatxSuspense>
                         </div>
-                        {settings.footer.show && !settings.footer.fixed && (
-                            <Footer />
-                        )}
                     </Scrollbar>
                 )}
 
@@ -120,13 +116,8 @@ const Layout1 = () => {
                         <div className="relative flex-grow">
                             <MatxSuspense>{renderRoutes(routes)}</MatxSuspense>
                         </div>
-                        {settings.footer.show && !settings.footer.fixed && (
-                            <Footer />
-                        )}
                     </div>
                 )}
-
-                {settings.footer.show && settings.footer.fixed && <Footer />}
             </div>
         </div>
     )
