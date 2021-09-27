@@ -6,7 +6,6 @@ import { renderRoutes } from 'react-router-config'
 import Layout1Topbar from './Layout1Topbar'
 import Layout1Sidenav from './Layout1Sidenav'
 import Footer from '../../Footer/Footer'
-import SecondarySidebar from '../../SecondarySidebar/SecondarySidebar'
 import AppContext from 'app/contexts/AppContext'
 import { MatxSuspense } from 'app/components'
 import { useTheme } from '@material-ui/core/styles'
@@ -16,13 +15,12 @@ import { makeStyles } from '@material-ui/core/styles'
 import useSettings from 'app/hooks/useSettings'
 
 const useStyles = makeStyles(({ palette, ...theme }) => ({
-    contentWrap: ({ width, secondarySidebar }) => {
+    contentWrap: ({ width }) => {
         return {
             verticalAlign: 'top',
             marginLeft: width,
             transition: 'all 0.3s ease',
             // [theme.breakpoints.up("sm")]: {
-            marginRight: secondarySidebar.open ? 50 : 0,
             // },
         }
     },
@@ -37,7 +35,7 @@ const useStyles = makeStyles(({ palette, ...theme }) => ({
 
 const Layout1 = () => {
     const { settings, updateSettings } = useSettings()
-    const { layout1Settings, secondarySidebar } = settings
+    const { layout1Settings } = settings
     const {
         leftSidebar: { mode: sidenavMode, show: showSidenav },
     } = layout1Settings
@@ -55,7 +53,7 @@ const Layout1 = () => {
     }
 
     const sidenavWidth = getSidenavWidth()
-    let classes = useStyles({ width: sidenavWidth, secondarySidebar })
+    let classes = useStyles({ width: sidenavWidth })
     const theme = useTheme()
     const isMdScreen = useMediaQuery(theme.breakpoints.down('md'))
 
@@ -130,7 +128,6 @@ const Layout1 = () => {
 
                 {settings.footer.show && settings.footer.fixed && <Footer />}
             </div>
-            {settings.secondarySidebar.show && <SecondarySidebar />}
         </div>
     )
 }
