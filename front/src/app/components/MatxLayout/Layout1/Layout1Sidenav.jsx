@@ -3,7 +3,6 @@ import { useTheme, makeStyles } from '@material-ui/core/styles'
 
 import Sidenav from '../../Sidenav/Sidenav'
 import Brand from '../../Brand/Brand'
-import { Switch, Hidden } from '@material-ui/core'
 import { convertHexToRGB } from 'utils'
 import useSettings from 'app/hooks/useSettings'
 
@@ -69,34 +68,11 @@ const Layout1Sidenav = () => {
         width: getSidenavWidth(),
         primaryRGB,
     })
-
-    const updateSidebarMode = (sidebarSettings) => {
-        updateSettings({
-            layout1Settings: {
-                leftSidebar: {
-                    ...sidebarSettings,
-                },
-            },
-        })
-    }
-
-    const handleSidenavToggle = () => {
-        updateSidebarMode({ mode: mode === 'compact' ? 'full' : 'compact' })
-    }
-
+    
     return (
         <div className={classes.sidenav}>
             <div className="flex-column relative h-full">
-                <Brand>
-                    <Hidden smDown>
-                        <Switch
-                            onChange={handleSidenavToggle}
-                            checked={leftSidebar.mode !== 'full'}
-                            color="secondary"
-                            size="small"
-                        />
-                    </Hidden>
-                </Brand>
+                <Brand/>
                 <Sidenav />
             </div>
         </div>

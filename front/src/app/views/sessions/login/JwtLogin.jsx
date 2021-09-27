@@ -10,7 +10,6 @@ import Box from '@material-ui/core/Box';
 import { makeStyles,withStyles } from '@material-ui/core/styles'
 import history from 'history.js'
 import clsx from 'clsx'
-import useAuth from 'app/hooks/useAuth'
 
 const useStyles = makeStyles(({ palette, ...theme }) => ({
     cardHolder: {

@@ -2,20 +2,12 @@ import React from 'react'
 import {
     Icon,
     IconButton,
-    MenuItem,
-    Avatar,
     useMediaQuery,
-    Hidden,
 } from '@material-ui/core'
-import { MatxMenu, MatxSearchBox } from 'app/components'
-import NotificationBar from '../../NotificationBar/NotificationBar'
-import { Link } from 'react-router-dom'
-import ShoppingCart from '../../ShoppingCart/ShoppingCart'
 import { makeStyles, useTheme } from '@material-ui/core/styles'
 import clsx from 'clsx'
 import useAuth from 'app/hooks/useAuth'
 import useSettings from 'app/hooks/useSettings'
-import { NotificationProvider } from 'app/contexts/NotificationContext'
 
 const useStyles = makeStyles(({ palette, ...theme }) => ({
     topbar: {
@@ -108,73 +100,6 @@ const Layout1Topbar = () => {
                         >
                             <Icon>menu</Icon>
                         </IconButton>
-
-                        <div className="hide-on-mobile">
-                            <IconButton>
-                                <Icon>mail_outline</Icon>
-                            </IconButton>
-
-                            <IconButton>
-                                <Icon>web_asset</Icon>
-                            </IconButton>
-
-                            <IconButton>
-                                <Icon>star_outline</Icon>
-                            </IconButton>
-                        </div>
-                    </div>
-                    <div className="flex items-center">
-                        <MatxSearchBox />
-                        <NotificationProvider>
-                            <NotificationBar />
-                        </NotificationProvider>
-
-                        {/* <NotificationBar2 /> */}
-
-                        <ShoppingCart />
-
-                        <MatxMenu
-                            menuButton={
-                                <div className={classes.userMenu}>
-                                    <Hidden xsDown>
-                                        <span>
-                                            Hi <strong>{user.name}</strong>
-                                        </span>
-                                    </Hidden>
-                                    <Avatar
-                                        className="cursor-pointer"
-                                        src={user.avatar}
-                                    />
-                                </div>
-                            }
-                        >
-                            <MenuItem>
-                                <Link className={classes.menuItem} to="/">
-                                    <Icon> home </Icon>
-                                    <span className="pl-4"> Home </span>
-                                </Link>
-                            </MenuItem>
-                            <MenuItem>
-                                <Link
-                                    className={classes.menuItem}
-                                    to="/page-layouts/user-profile"
-                                >
-                                    <Icon> person </Icon>
-                                    <span className="pl-4"> Profile </span>
-                                </Link>
-                            </MenuItem>
-                            <MenuItem className={classes.menuItem}>
-                                <Icon> settings </Icon>
-                                <span className="pl-4"> Settings </span>
-                            </MenuItem>
-                            <MenuItem
-                                onClick={logout}
-                                className={classes.menuItem}
-                            >
-                                <Icon> power_settings_new </Icon>
-                                <span className="pl-4"> Logout </span>
-                            </MenuItem>
-                        </MatxMenu>
                     </div>
                 </div>
             </div>
