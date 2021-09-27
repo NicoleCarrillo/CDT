@@ -37,7 +37,7 @@ const JwtLogin = () => {
     const handleFormSubmit = async (event) => {
         setLoading(true)
         try {
-            history.push('/')
+            history.push('/forms/basic')
         } catch (e) {
             console.log(e)
             setMessage(e.message)

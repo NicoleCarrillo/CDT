@@ -1,12 +1,12 @@
 export const navigations = [
     {
         name: 'Alta',
-        path: '/dashboard',
-        icon: 'dashboard',
+        path: '/forms/basic',
+        icon: 'edit',
     },
     {
         name: 'Consulta',
         path: '/dashboard',
-        icon: 'dashboard',
+        icon: 'touch_app',
     },
 ]

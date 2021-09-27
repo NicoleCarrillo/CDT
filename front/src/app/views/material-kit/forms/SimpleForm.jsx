@@ -15,8 +15,22 @@ import {
 } from '@material-ui/pickers'
 import 'date-fns'
 import DateFnsUtils from '@date-io/date-fns'
+import InputLabel from '@mui/material/InputLabel';
+import MenuItem from '@mui/material/MenuItem';
+import FormControl from '@mui/material/FormControl';
+import Select from '@mui/material/Select';
+import Box from '@mui/material/Box';
+import TextField from '@mui/material/TextField';
 
 const SimpleForm = () => {
+
+    const [delito, setDelito] = React.useState('');
+
+    const handleChangeDelito = (event) => {
+      setDelito(event.target.value);
+    };
+  
+
     const [state, setState] = useState({
         date: new Date(),
     })
@@ -46,168 +60,182 @@ const SimpleForm = () => {
         })
     }
 
+    const handleChange2 = (event) => {
+        //event.persist()
+
+        setState({
+            ...state,
+            [event.target.name]: event.target.value,
+        })
+        if (event.target.value.match("")) {
+            alert("hey");
+        }
+    }
+
     const handleDateChange = (date) => {
         setState({ ...state, date })
     }
 
     const {
-        username,
-        firstName,
-        creditCard,
-        mobile,
-        password,
-        confirmPassword,
-        gender,
-        date,
-        email,
+        nombreSospechoso,
+        descripcion,
+        alias,
+        ubicacion,
+        apellido,
+        genero,
+        rasgos,
+        fecha,
     } = state
 
     return (
         <div>
             <ValidatorForm onSubmit={handleSubmit} onError={() => null}>
                 <Grid container spacing={6}>
+                    <Grid item lg={12} md={12} sm={12} xs={12}>
+                        <FormControl style={{minWidth: 300, maxHeight: 100}} size="small">
+                            <InputLabel style ={{fontSize:12}}>Delito</InputLabel>
+                            <Select
+                                style ={{fontSize:12}}
+                                value={delito}
+                                label="Delito"
+                                onChange={handleChangeDelito}
+                                >
+                                <MenuItem value="" style ={{fontSize:12}}>
+                                    <em>Especial</em>
+                                </MenuItem>
+                                <MenuItem value={10} style ={{fontSize:12}}>Homicidio</MenuItem>
+                                <MenuItem value={20} style ={{fontSize:12}}>Robo</MenuItem>
+                                <MenuItem value={30} style ={{fontSize:12}}>Traición a la patria</MenuItem>
+                                </Select>
+                        </FormControl>
+                    </Grid>
+                </Grid>
+                <Box textAlign='center' marginTop='20px' marginBottom='10px' >
+                    <TextField
+                        style ={ {fontSize:4, minWidth: 1050, maxHeight: 100}}
+                        id="outlined-multiline-static"
+                        label="Descripción Delito"
+                        multiline
+                        rows={3}
+                        size="small"
+                        inputProps={{style: {fontSize: 12}}} // font size of input text
+                        InputLabelProps={{style: {fontSize: 12}}} // font size of input label
+                        onChange={handleChange}
+                        value={descripcion || ''}
+                    />
+                </Box>
+                    <Grid container spacing={6}>
                     <Grid item lg={6} md={6} sm={12} xs={12}>
                         <TextValidator
+                            style ={ {fontSize:4}}
                             className="mb-4 w-full"
-                            label="Username (Min length 4, Max length 9)"
+                            label="Nombre Sospechoso"
                             onChange={handleChange}
                             type="text"
-                            name="username"
-                            value={username || ''}
-                            validators={[
-                                'required',
-                                'minStringLength: 4',
-                                'maxStringLength: 9',
-                            ]}
-                            errorMessages={['this field is required']}
+                            name="nombreSospechoso"
+                            value={nombreSospechoso || ''}
                         />
                         <TextValidator
                             className="mb-4 w-full"
-                            label="First Name"
+                            label="Alias"
+                            style ={ {fontSize:4}}
                             onChange={handleChange}
                             type="text"
-                            name="firstName"
-                            value={firstName || ''}
-                            validators={['required']}
-                            errorMessages={['this field is required']}
+                            name="alias"
+                            value={alias || ''}
                         />
-                        <TextValidator
-                            className="mb-4 w-full"
-                            label="Email"
-                            onChange={handleChange}
-                            type="email"
-                            name="email"
-                            value={email || ''}
-                            validators={['required', 'isEmail']}
-                            errorMessages={[
-                                'this field is required',
-                                'email is not valid',
-                            ]}
-                        />
-
                         <MuiPickersUtilsProvider utils={DateFnsUtils}>
                             <KeyboardDatePicker
                                 className="mb-4 w-full"
                                 margin="none"
                                 id="mui-pickers-date"
-                                label="Date picker"
+                                label="Fecha"
                                 inputVariant="standard"
                                 type="text"
                                 autoOk={true}
-                                value={date}
+                                value={fecha}
                                 onChange={handleDateChange}
                                 KeyboardButtonProps={{
                                     'aria-label': 'change date',
                                 }}
                             />
                         </MuiPickersUtilsProvider>
-                        <TextValidator
-                            className="mb-8 w-full"
-                            label="Credit Card"
-                            onChange={handleChange}
-                            type="number"
-                            name="creditCard"
-                            value={creditCard || ''}
-                            validators={[
-                                'required',
-                                'minStringLength:16',
-                                'maxStringLength: 16',
-                            ]}
-                            errorMessages={['this field is required']}
+
+                        <TextField
+                        style ={ {fontSize:4, minWidth: 500, maxHeight: 100, marginBottom:20}}
+                        id="outlined-multiline-static"
+                        label="Ubicación"
+                        multiline
+                        rows={3}
+                        size="small"
+                        inputProps={{style: {fontSize: 12}}} // font size of input text
+                        InputLabelProps={{style: {fontSize: 12}}} // font size of input label
+                        onChange={handleChange}
+                        value={ubicacion || ''}
                         />
+
                     </Grid>
 
                     <Grid item lg={6} md={6} sm={12} xs={12}>
                         <TextValidator
+                            style ={ {fontSize:4}}
                             className="mb-4 w-full"
-                            label="Mobile Nubmer"
+                            label="Apellido"
                             onChange={handleChange}
                             type="text"
-                            name="mobile"
-                            value={mobile || ''}
-                            validators={['required']}
-                            errorMessages={['this field is required']}
-                        />
-                        <TextValidator
-                            className="mb-4 w-full"
-                            label="Password"
-                            onChange={handleChange}
-                            name="password"
-                            type="password"
-                            value={password || ''}
-                            validators={['required']}
-                            errorMessages={['this field is required']}
-                        />
-                        <TextValidator
-                            className="mb-4 w-full"
-                            label="Confirm Password"
-                            onChange={handleChange}
-                            name="confirmPassword"
-                            type="password"
-                            value={confirmPassword || ''}
-                            validators={['required', 'isPasswordMatch']}
-                            errorMessages={[
-                                'this field is required',
-                                "password didn't match",
-                            ]}
+                            name="apellido"
+                            value={apellido || ''}
                         />
                         <RadioGroup
+                            style ={ {fontSize:4}}
                             className="mb-4"
-                            value={gender || ''}
-                            name="gender"
+                            value={genero || ''}
+                            name="genero"
                             onChange={handleChange}
                             row
                         >
                             <FormControlLabel
-                                value="Male"
+                                value="Masculino"
                                 control={<Radio color="secondary" />}
-                                label="Male"
+                                label="Masculino"
                                 labelPlacement="end"
                             />
                             <FormControlLabel
-                                value="Female"
+                                value="Femenino"
                                 control={<Radio color="secondary" />}
-                                label="Female"
+                                label="Femenino"
                                 labelPlacement="end"
                             />
                             <FormControlLabel
-                                value="Others"
+                                value="Otro"
                                 control={<Radio color="secondary" />}
-                                label="Others"
+                                label="Otro"
                                 labelPlacement="end"
                             />
                         </RadioGroup>
-                        <FormControlLabel
-                            control={<Checkbox />}
-                            label="I have read and agree to the terms of service."
+
+                        <TextField
+                        style ={ {fontSize:4, minWidth: 500, maxHeight: 100, marginBottom:20}}
+                        id="outlined-multiline-static"
+                        label="Rasgos Físicos Sospechoso"
+                        multiline
+                        rows={6}
+                        size="small"
+                        inputProps={{style: {fontSize: 12}}} // font size of input text
+                        InputLabelProps={{style: {fontSize: 12}}} // font size of input label
+                        onChange={handleChange}
+                        value={rasgos || ''}
                         />
+                        
                     </Grid>
                 </Grid>
+            </ValidatorForm>
+            <Box textAlign='center' marginTop='20px' marginBottom='10px'>
                 <Button color="primary" variant="contained" type="submit">
                     <Icon>send</Icon>
-                    <span className="pl-2 capitalize">Submit</span>
+                    <span className="pl-2 capitalize">Denunciar</span>
                 </Button>
-            </ValidatorForm>
+            </Box>
         </div>
     )
 }
