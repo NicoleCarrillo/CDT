@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { ValidatorForm, TextValidator } from 'react-material-ui-form-validator'
 import { createTheme, ThemeProvider, withStyles } from '@material-ui/core/styles';
-import Brown from '@material-ui/core/colors/purple';
 import {
     Button,
     Icon,
@@ -9,6 +8,7 @@ import {
     Radio,
     RadioGroup,
     FormControlLabel,
+    Checkbox,
 } from '@material-ui/core'
 import {
     MuiPickersUtilsProvider,
@@ -22,30 +22,28 @@ import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
+import Brown from '@material-ui/core/colors/brown';
+
+const theme = createTheme({
+    palette: {
+      primary: {
+        // Purple and green play nicely together.
+        //main: '#616060',
+        main:Brown[300],
+      },
+      secondary: {
+        main: '#3D372F',
+      },
+    },
+  });
 
 const SimpleForm = () => {
-
-    const theme = createTheme({
-        palette: {
-          primary: {
-            // Purple and green play nicely together.
-            main: '#616060',
-          },
-          secondary: {
-            // This is green.A700 as hex.
-            main: '#3D372F',
-          },
-        },
-      });
-      
-
     const [delito, setDelito] = React.useState('');
 
     const handleChangeDelito = (event) => {
       setDelito(event.target.value);
     };
   
-
     const [state, setState] = useState({
         date: new Date(),
     })
@@ -107,30 +105,30 @@ const SimpleForm = () => {
 
     return (
         <div>
-            <ValidatorForm onSubmit={handleSubmit} onError={() => null} >
-                <Grid container spacing={6}>
-                    <Grid item lg={12} md={12} sm={12} xs={12}>
-                        <FormControl style={{minWidth: 300, maxHeight: 100}} size="small">
-                            <InputLabel style ={{fontSize:12}}>Delito</InputLabel>
-                            <Select
-                                style ={{fontSize:12}}
-                                value={delito}
-                                label="Delito"
-                                onChange={handleChangeDelito}
-                                >
-                                <MenuItem value="" style ={{fontSize:12}}>
-                                    <em>Especial</em>
-                                </MenuItem>
-                                <MenuItem value={10} style ={{fontSize:12}}>Homicidio</MenuItem>
-                                <MenuItem value={20} style ={{fontSize:12}}>Robo</MenuItem>
-                                <MenuItem value={30} style ={{fontSize:12}}>Traición a la patria</MenuItem>
-                                </Select>
+            <ValidatorForm onSubmit={handleSubmit} onError={() => null}>
+            <Grid container spacing={6}>
+                <Grid item lg={12} md={12} sm={12} xs={12}>
+                    <FormControl style={{minWidth: 300, maxHeight: 100}} size="small">
+                        <InputLabel style ={{fontSize:12}}>Delito</InputLabel>
+                        <Select
+                            style ={{fontSize:12}}
+                            value={delito}
+                            label="Delito"
+                            onChange={handleChangeDelito}
+                            >
+                            <MenuItem value="" style ={{fontSize:12}}>
+                                <em>Especial</em>
+                            </MenuItem>
+                            <MenuItem value={10} style ={{fontSize:12}}>Homicidio</MenuItem>
+                            <MenuItem value={20} style ={{fontSize:12}}>Robo</MenuItem>
+                            <MenuItem value={30} style ={{fontSize:12}}>Traición a la patria</MenuItem>
+                            </Select>
                         </FormControl>
                     </Grid>
                 </Grid>
                 <Box textAlign='center' marginTop='20px' marginBottom='10px' >
                     <TextField
-                        style ={ {fontSize:4, minWidth: 1050, maxHeight: 100}}
+                        style ={ {fontSize:12, minWidth: 1050, maxHeight: 100}}
                         id="outlined-multiline-static"
                         label="Descripción Delito"
                         multiline
@@ -139,12 +137,13 @@ const SimpleForm = () => {
                         inputProps={{style: {fontSize: 12}}} // font size of input text
                         InputLabelProps={{style: {fontSize: 12}}} // font size of input label
                         onChange={handleChange}
-                        value={descripcion || ''}
+                        value={descripcion}
+                        required
                     />
                 </Box>
-                    <Grid container spacing={6}>
+                <Grid container spacing={6}>
                     <Grid item lg={6} md={6} sm={12} xs={12}>
-                        <TextValidator
+                    <TextValidator
                             style ={ {fontSize:4}}
                             className="mb-4 w-full"
                             label="Nombre Sospechoso"
@@ -190,12 +189,12 @@ const SimpleForm = () => {
                         InputLabelProps={{style: {fontSize: 12}}} // font size of input label
                         onChange={handleChange}
                         value={ubicacion || ''}
+                        required
                         />
-
                     </Grid>
 
                     <Grid item lg={6} md={6} sm={12} xs={12}>
-                        <TextValidator
+                    <TextValidator
                             style ={ {fontSize:4}}
                             className="mb-4 w-full"
                             label="Apellido"
@@ -244,18 +243,17 @@ const SimpleForm = () => {
                         onChange={handleChange}
                         value={rasgos || ''}
                         />
-                        
                     </Grid>
                 </Grid>
-            </ValidatorForm>
-            <Box textAlign='center' marginTop='20px' marginBottom='10px'>
+                <Box textAlign='center' marginTop='20px' marginBottom='10px'>
                 <ThemeProvider theme={theme}> 
                     <ColorButton variant="contained" type="submit" >
                         <Icon>send</Icon>
                         <span className="pl-2 capitalize">Denunciar</span>
                     </ColorButton>
                 </ThemeProvider>
-            </Box>
+                </Box>
+            </ValidatorForm>
         </div>
     )
 }
