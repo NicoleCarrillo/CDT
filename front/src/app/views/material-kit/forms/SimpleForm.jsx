@@ -8,7 +8,6 @@ import {
     Radio,
     RadioGroup,
     FormControlLabel,
-    Checkbox,
 } from '@material-ui/core'
 import {
     MuiPickersUtilsProvider,
@@ -23,6 +22,8 @@ import Select from '@mui/material/Select';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import Brown from '@material-ui/core/colors/brown';
+import Popover from '@mui/material/Popover';
+import Typography from '@mui/material/Typography';
 
 const theme = createTheme({
     palette: {
@@ -37,7 +38,28 @@ const theme = createTheme({
     },
   });
 
+let randomV;
+let randomC ="";
+const characters ='ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+
 const SimpleForm = () => {
+    const [anchorEl, setAnchorEl] = React.useState(null);
+
+    const handleClick = (event) => {
+        setAnchorEl(event.currentTarget);
+        randomV = Math.floor(Math.random() * (20000 - 10000) + 1000);
+        for ( let i = 0; i < 5; i++ ) {
+            randomC += characters.charAt(Math.floor(Math.random() * characters.length));
+        }
+    };
+
+    const handleClose = () => {
+        setAnchorEl(null);
+    };
+
+    const open = Boolean(anchorEl);
+    const id = open ? 'simple-popover' : undefined;
+
     const [delito, setDelito] = React.useState('');
 
     const handleChangeDelito = (event) => {
@@ -247,10 +269,19 @@ const SimpleForm = () => {
                 </Grid>
                 <Box textAlign='center' marginTop='20px' marginBottom='10px'>
                 <ThemeProvider theme={theme}> 
-                    <ColorButton variant="contained" type="submit" >
+                    <ColorButton variant="contained" type="submit" onClick={handleClick}>
                         <Icon>send</Icon>
                         <span className="pl-2 capitalize">Denunciar</span>
                     </ColorButton>
+                    <Popover
+                        id={id}
+                        open={open}
+                        anchorEl={anchorEl}
+                        onClose={handleClose}
+                        style ={ {top:'700px',left:'650px'}}
+                    >
+                    <Typography sx={{ p: 1 }} style ={ {fontSize:20}}>Your ID:{randomV}, Your PASSWORD:{randomC}</Typography>
+                    </Popover>
                 </ThemeProvider>
                 </Box>
             </ValidatorForm>
