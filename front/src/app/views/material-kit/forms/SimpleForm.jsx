@@ -109,7 +109,7 @@ const SimpleForm = () => {
             <Grid container spacing={6}>
                 <Grid item lg={12} md={12} sm={12} xs={12}>
                     <FormControl style={{minWidth: 300, maxHeight: 100}} size="small">
-                        <InputLabel style ={{fontSize:12}}>Delito</InputLabel>
+                        <InputLabel style ={{fontSize:14}}>Delito</InputLabel>
                         <Select
                             style ={{fontSize:12}}
                             value={delito}
@@ -126,16 +126,16 @@ const SimpleForm = () => {
                         </FormControl>
                     </Grid>
                 </Grid>
-                <Box textAlign='center' marginTop='20px' marginBottom='10px' >
+                <Box textAlign='center' marginTop='20px' marginBottom='50px' >
                     <TextField
-                        style ={ {fontSize:12, minWidth: 1050, maxHeight: 100}}
+                        style ={ {fontSize:12, minWidth: 1060, maxHeight: 100}}
                         id="outlined-multiline-static"
                         label="Descripción Delito"
                         multiline
-                        rows={3}
+                        rows={5}
                         size="small"
-                        inputProps={{style: {fontSize: 12}}} // font size of input text
-                        InputLabelProps={{style: {fontSize: 12}}} // font size of input label
+                        inputProps={{style: {fontSize: 14}}} // font size of input text
+                        InputLabelProps={{style: {fontSize: 14}}} // font size of input label
                         onChange={handleChange}
                         value={descripcion}
                         required
@@ -144,7 +144,7 @@ const SimpleForm = () => {
                 <Grid container spacing={6}>
                     <Grid item lg={6} md={6} sm={12} xs={12}>
                     <TextValidator
-                            style ={ {fontSize:4}}
+                            style ={ {fontSize:14}}
                             className="mb-4 w-full"
                             label="Nombre Sospechoso"
                             onChange={handleChange}
@@ -155,7 +155,7 @@ const SimpleForm = () => {
                         <TextValidator
                             className="mb-4 w-full"
                             label="Alias"
-                            style ={ {fontSize:4}}
+                            style ={ {fontSize:14}}
                             onChange={handleChange}
                             type="text"
                             name="alias"
@@ -179,16 +179,16 @@ const SimpleForm = () => {
                         </MuiPickersUtilsProvider>
 
                         <TextField
-                        style ={ {fontSize:4, minWidth: 500, maxHeight: 100, marginBottom:20}}
+                        style ={ {fontSize:12, minWidth: 500, maxHeight: 100, marginBottom:20}}
                         id="outlined-multiline-static"
                         label="Ubicación"
                         multiline
-                        rows={3}
+                        rows={4}
                         size="small"
-                        inputProps={{style: {fontSize: 12}}} // font size of input text
-                        InputLabelProps={{style: {fontSize: 12}}} // font size of input label
+                        inputProps={{style: {fontSize: 14}}} // font size of input text
+                        InputLabelProps={{style: {fontSize: 14}}} // font size of input label
                         onChange={handleChange}
-                        value={ubicacion || ''}
+                        value={ubicacion}
                         required
                         />
                     </Grid>
@@ -232,16 +232,16 @@ const SimpleForm = () => {
                         </RadioGroup>
 
                         <TextField
-                        style ={ {fontSize:4, minWidth: 500, maxHeight: 100, marginBottom:20}}
+                        style ={ {fontSize:14, minWidth: 500, maxHeight: 100, marginBottom:20}}
                         id="outlined-multiline-static"
                         label="Rasgos Físicos Sospechoso"
                         multiline
-                        rows={6}
+                        rows={7}
                         size="small"
                         inputProps={{style: {fontSize: 12}}} // font size of input text
                         InputLabelProps={{style: {fontSize: 12}}} // font size of input label
                         onChange={handleChange}
-                        value={rasgos || ''}
+                        value={rasgos}
                         />
                     </Grid>
                 </Grid>
