@@ -6,7 +6,7 @@ export const navigations = [
     },
     {
         name: 'Consulta',
-        path: '/dashboard',
+        path: '/forms/upload',
         icon: 'touch_app',
     },
 ]

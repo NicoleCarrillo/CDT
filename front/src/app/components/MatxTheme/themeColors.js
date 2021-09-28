@@ -19,11 +19,11 @@ export const themeColors = {
         palette: {
             type: 'light',
             primary: {
-                main: '#ffffff',
+                main: '#3D372F',
                 contrastText: textLight.primary,
             },
             secondary: {
-                main: '#7467ef',
+                main: '#c7c7c7',
                 contrastText: '#ffffff',
             },
             error: errorColor,
@@ -34,11 +34,11 @@ export const themeColors = {
         palette: {
             type: 'light',
             primary: {
-                main: '#ffffff',
+                main: '#3D372F',
                 contrastText: textLight.primary,
             },
             secondary: {
-                main: '#1976d2',
+                main: '#c7c7c7',
                 contrastText: '#ffffff',
             },
             text: textLight,
@@ -48,12 +48,12 @@ export const themeColors = {
         palette: {
             type: 'dark',
             primary: {
-                main: '#222A45',
+                main: '#3D372F',
                 contrastText: '#ffffff',
             },
             secondary: {
-                main: '#ff9e43',
-                contrastText: textLight.primary,
+                main: '#c7c7c7',
+                contrastText: '#ffffff',
             },
             error: errorColor,
             background: {
@@ -66,12 +66,12 @@ export const themeColors = {
         palette: {
             type: 'dark',
             primary: {
-                main: '#1a2038',
+                main: '#3D372F',
                 contrastText: '#ffffff',
             },
             secondary: {
-                main: '#ff9e43',
-                contrastText: textLight.primary,
+                main: '#c7c7c7',
+                contrastText: '#ffffff',
             },
             error: errorColor,
             background: {
@@ -84,7 +84,7 @@ export const themeColors = {
         palette: {
             type: 'light',
             primary: {
-                main: '#7467ef',
+                main: '#3D372F',
                 contrastText: '#ffffff',
             },
             secondary: secondaryColor,
@@ -96,12 +96,12 @@ export const themeColors = {
         palette: {
             type: 'light',
             primary: {
-                main: '#6a75c9',
+                main: '#3D372F',
                 contrastText: '#ffffff',
             },
             secondary: {
-                main: '#ff9e43',
-                contrastText: textLight.primary,
+                main: '#c7c7c7',
+                contrastText: '#ffffff',
             },
             error: errorColor,
             text: textLight,
@@ -111,12 +111,12 @@ export const themeColors = {
         palette: {
             type: 'dark',
             primary: {
-                main: '#7467ef',
+                main: '#3D372F',
                 contrastText: '#ffffff',
             },
             secondary: {
-                main: '#ff9e43',
-                contrastText: textLight.primary,
+                main: '#c7c7c7',
+                contrastText: '#ffffff',
             },
             error: errorColor,
             background: {
@@ -129,12 +129,12 @@ export const themeColors = {
         palette: {
             type: 'dark',
             primary: {
-                main: '#6a75c9',
+                main: '#3D372F',
                 contrastText: '#ffffff',
             },
             secondary: {
-                main: '#ff9e43',
-                contrastText: textLight.primary,
+                main: '#c7c7c7',
+                contrastText: '#ffffff',
             },
             error: errorColor,
             background: {
@@ -147,12 +147,12 @@ export const themeColors = {
         palette: {
             type: 'light',
             primary: {
-                main: '#1976d2',
+                main: '#3D372F',
                 contrastText: '#ffffff',
             },
             secondary: {
-                main: '#FFAF38',
-                contrastText: textLight.primary,
+                main: '#c7c7c7',
+                contrastText: '#ffffff',
             },
             error: errorColor,
             text: textLight,
@@ -162,12 +162,12 @@ export const themeColors = {
         palette: {
             type: 'dark',
             primary: {
-                main: '#1976d2',
+                main: '#3D372F',
                 contrastText: '#ffffff',
             },
             secondary: {
-                main: '#FF4F30',
-                contrastText: textLight.primary,
+                main: '#c7c7c7',
+                contrastText:'#ffffff',
             },
             error: errorColor,
             background: {
@@ -180,12 +180,12 @@ export const themeColors = {
         palette: {
             type: 'dark',
             primary: {
-                main: '#e53935',
+                main: '#3D372F',
                 contrastText: '#ffffff',
             },
             secondary: {
-                main: '#FFAF38',
-                contrastText: textLight.primary,
+                main: '#c7c7c7',
+                contrastText: '#ffffff',
             },
             error: errorColor,
         },

@@ -10,7 +10,7 @@ import {
 } from '@material-ui/core'
 
 const getSteps = () => {
-    return ['First Name', 'Last Name', 'Address']
+    return ['Inicializado', 'En Proceso', 'Finalizado']
 }
 
 function getStepContent(stepIndex) {
