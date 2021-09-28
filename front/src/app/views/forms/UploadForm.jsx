@@ -82,7 +82,7 @@ const UploadForm = () => {
             <SimpleCard title="Requisitos">
                 <ValidatorForm onSubmit={handleSubmit} onError={() => null}>
                     <Grid container spacing={6}>
-                        <Grid item lg={6} md={4} sm={12} xs={4}>
+                        <Grid item lg={6} md={6} sm={12} xs={6}>
                             <TextValidator
                                 id="filled-search"
                                 label="Search field"
@@ -100,7 +100,7 @@ const UploadForm = () => {
                                 ]}
                             />
                         </Grid>
-                        <Grid item lg={6} md={4} sm={12} xs={4}>
+                        <Grid item lg={6} md={6} sm={12} xs={6}>
                             <TextValidator
                                 className="mb-4 w-full"
                                 label="Contraseña"
@@ -116,15 +116,15 @@ const UploadForm = () => {
                                 ]}
                             />
                         </Grid>
-                        <Grid item lg={6} md={4} sm={12} xs={4}>
+                        </Grid>
+                        <Box textAlign='center' marginTop='20px' marginBottom='10px'>
                             <ThemeProvider theme={theme}> 
                                 <ColorButton variant="contained" type="submit" >
                                     <Icon>send</Icon>
                                     <span className="pl-2 capitalize">Consultar</span>
                                 </ColorButton>
                             </ThemeProvider>
-                        </Grid>
-                    </Grid>
+                        </Box>
                 </ValidatorForm>
             </SimpleCard>
             <div className="py-3"></div>

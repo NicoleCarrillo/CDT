@@ -8,43 +8,54 @@ import {
     Stepper,
     Grid,
 } from '@material-ui/core'
+import Rating from '@mui/material/Rating';
+import Typography from '@mui/material/Typography';
+
 
 const getSteps = () => {
-    return ['Inicializado', 'En Proceso', 'Finalizado']
+    return ['Inicializado', 'En Proceso','Analizando Evidencias', 'Sopechosos','Finalizado']
 }
 
-function getStepContent(stepIndex) {
+function getStepContent(stepIndex, value) {
     switch (stepIndex) {
         case 0:
             return (
                 <form noValidate autoComplete="off">
                     <Grid container spacing={3}>
                         <Grid item lg={6} md={6} sm={12} xs={12}>
-                            <TextField className="w-full" label="First Name" />
+                            <TextField className="w-full" label="Nombre Funcionario" />
                         </Grid>
                         <Grid item lg={6} md={6} sm={12} xs={12}>
-                            <TextField className="w-full" label="Middle Name" />
+                            <TextField className="w-full" label="Apellido Funcionario" />
                         </Grid>
                         <Grid item lg={6} md={6} sm={12} xs={12}>
-                            <TextField className="w-full" label="Last Name" />
+                            <TextField className="w-full" label="Placa Funcionario" />
                         </Grid>
                         <Grid item lg={6} md={6} sm={12} xs={12}>
-                            <TextField className="w-full" label="Age" />
+                            <Typography component="legend" style ={ {fontSize:12}}>Raiting Funcionario</Typography>
+                            <Rating name="read-only" value={value} readOnly />
+                        </Grid>
+                        <Grid item lg={12} md={12} sm={12} xs={12}>
+                            <TextField
+                                style ={ {fontSize:12, minWidth: 1050, maxHeight: 100}}
+                                id="filled-multiline-static"
+                                variant="filled"
+                                label="Descripción Status"
+                                multiline
+                                rows={3}
+                                inputProps={{style: {fontSize: 12}}} // font size of input text
+                                InputLabelProps={{style: {fontSize: 14}}} // font size of input label
+                            />
                         </Grid>
                     </Grid>
                 </form>
             )
-        case 1:
-            return <TextField label="Company Name"></TextField>
-        case 2:
-            return <TextField label="Address"></TextField>
-        default:
-            return ''
     }
 }
 
 export default function HorizontalStepper() {
     const [activeStep, setActiveStep] = useState(0)
+    const [value, setValue] = useState(2)
     const steps = getSteps()
 
     const handleNext = () => {
@@ -74,19 +85,19 @@ export default function HorizontalStepper() {
                         <div className="flex items-center mb-4">
                             <Icon>done</Icon> <span className="ml-2">Done</span>
                         </div>
-                        <Button
+                        {/* <Button
                             variant="contained"
                             color="secondary"
                             onClick={handleReset}
                         >
                             Reset
-                        </Button>
+                        </Button> */}
                     </div>
                 ) : (
                     <div>
-                        {getStepContent(activeStep)}
+                        {getStepContent(activeStep, value)}
                         <div className="pt-6">
-                            <Button
+                            {/* <Button
                                 variant="contained"
                                 color="secondary"
                                 disabled={activeStep === 0}
@@ -103,7 +114,7 @@ export default function HorizontalStepper() {
                                 {activeStep === steps.length - 1
                                     ? 'Finish'
                                     : 'Next'}
-                            </Button>
+                            </Button> */}
                         </div>
                     </div>
                 )}
