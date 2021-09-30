@@ -6,10 +6,6 @@ const formsRoutes = [
         component: React.lazy(() => import('./BasicForm')),
     },
     {
-        path: '/forms/editor',
-        component: React.lazy(() => import('./EditorForm')),
-    },
-    {
         path: '/forms/upload',
         component: React.lazy(() => import('./UploadForm')),
     }
