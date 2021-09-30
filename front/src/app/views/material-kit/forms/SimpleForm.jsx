@@ -24,6 +24,7 @@ import TextField from '@mui/material/TextField';
 import Brown from '@material-ui/core/colors/brown';
 import Popover from '@mui/material/Popover';
 import Typography from '@mui/material/Typography';
+import api from 'app/services/api';
 
 const theme = createTheme({
     palette: {
@@ -44,6 +45,7 @@ const characters ='ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz012345678
 
 const SimpleForm = () => {
     const [anchorEl, setAnchorEl] = React.useState(null);
+    const [data, setData] = useState(null)
 
     const handleClick = (event) => {
         setAnchorEl(event.currentTarget);
@@ -51,6 +53,18 @@ const SimpleForm = () => {
         for ( let i = 0; i < 5; i++ ) {
             randomC += characters.charAt(Math.floor(Math.random() * characters.length));
         }
+        let url = "/putComplain?tipo_delito="+delito+"&desc="+descripcion+"&id_carpeta=7&ubicacion="+ubicacion+"&fecha=2021-09-1 06:06:06"+"&nombre_sospechoso="+nombreSospechoso+"&apellido_sospechoso="+apellido+"&desc_sospechoso="+rasgos+"&aka=" + alias;
+        console.log(url);
+        // api.put(url)
+        //     .then(response => {
+        //         setData(response.data);
+        //         console.log(data);
+        //     })
+        //     .catch(error => {
+        //         console.error("error fecthing");
+        // })
+        console.log(delito);
+        console.log(descripcion);
     };
 
     const handleClose = () => {
@@ -61,6 +75,12 @@ const SimpleForm = () => {
     const id = open ? 'simple-popover' : undefined;
 
     const [delito, setDelito] = React.useState('');
+    const [nombreSospechoso, setNombre] = React.useState('');
+    const [descripcion, setDesc] = React.useState('');
+    const [alias, setAlias] = React.useState('');
+    const [ubicacion, setUbi] = React.useState('');
+    const [apellido, setApellido] = React.useState('');
+    const [rasgos, setRasgos] = React.useState('');
 
     const handleChangeDelito = (event) => {
       setDelito(event.target.value);
@@ -82,9 +102,39 @@ const SimpleForm = () => {
         return () => ValidatorForm.removeValidationRule('isPasswordMatch')
     }, [state.password])
 
-    const handleSubmit = (event) => {
-        // console.log("submitted");
-        // console.log(event);
+
+    const handleChangeNombre = (event) => {
+        event.persist()
+        setNombre(event.target.value);
+    }
+
+    const handleChangeDesc = (event) => {
+        event.persist()
+        setDesc(event.target.value);
+    }
+
+    const handleChangeAlias = (event) => {
+        event.persist()
+        setAlias(event.target.value);
+    }
+
+    const handleChangeUbi = (event) => {
+        event.persist()
+        setUbi(event.target.value);
+    }
+
+    const handleChangeApellido = (event) => {
+        event.persist()
+        setApellido(event.target.value);
+    }
+    
+    const handleChangeRasgos = (event) => {
+        event.persist()
+        setRasgos(event.target.value);
+    }
+
+    const handleDateChange = (date) => {
+        setState({ ...state, date })
     }
 
     const handleChange = (event) => {
@@ -93,10 +143,6 @@ const SimpleForm = () => {
             ...state,
             [event.target.name]: event.target.value,
         })
-    }
-
-    const handleDateChange = (date) => {
-        setState({ ...state, date })
     }
 
     const ColorButton = withStyles((theme) => ({
@@ -114,20 +160,13 @@ const SimpleForm = () => {
         },
       }))(Button);
 
-    const {
-        nombreSospechoso,
-        descripcion,
-        alias,
-        ubicacion,
-        apellido,
-        genero,
-        rasgos,
+      const{
         fecha,
-    } = state
+        genero,
+    }= state
 
     return (
         <div>
-            <ValidatorForm onSubmit={handleSubmit} onError={() => null}>
             <Grid container spacing={6}>
                 <Grid item lg={12} md={12} sm={12} xs={12}>
                     <FormControl style={{minWidth: 300, maxHeight: 100}} size="small">
@@ -158,27 +197,27 @@ const SimpleForm = () => {
                         size="small"
                         inputProps={{style: {fontSize: 14}}} // font size of input text
                         InputLabelProps={{style: {fontSize: 14}}} // font size of input label
-                        onChange={handleChange}
+                        onChange={handleChangeDesc}
                         value={descripcion}
                         required
                     />
                 </Box>
                 <Grid container spacing={6}>
                     <Grid item lg={6} md={6} sm={12} xs={12}>
-                    <TextValidator
+                    <TextField
                             style ={ {fontSize:14}}
                             className="mb-4 w-full"
                             label="Nombre Sospechoso"
-                            onChange={handleChange}
+                            onChange={handleChangeNombre}
                             type="text"
                             name="nombreSospechoso"
                             value={nombreSospechoso || ''}
                         />
-                        <TextValidator
+                        <TextField
                             className="mb-4 w-full"
                             label="Alias"
                             style ={ {fontSize:14}}
-                            onChange={handleChange}
+                            onChange={handleChangeAlias}
                             type="text"
                             name="alias"
                             value={alias || ''}
@@ -209,18 +248,18 @@ const SimpleForm = () => {
                         size="small"
                         inputProps={{style: {fontSize: 14}}} // font size of input text
                         InputLabelProps={{style: {fontSize: 14}}} // font size of input label
-                        onChange={handleChange}
+                        onChange={handleChangeUbi}
                         value={ubicacion}
                         required
                         />
                     </Grid>
 
                     <Grid item lg={6} md={6} sm={12} xs={12}>
-                    <TextValidator
+                    <TextField
                             style ={ {fontSize:4}}
                             className="mb-4 w-full"
                             label="Apellido"
-                            onChange={handleChange}
+                            onChange={handleChangeApellido}
                             type="text"
                             name="apellido"
                             value={apellido || ''}
@@ -262,7 +301,7 @@ const SimpleForm = () => {
                         size="small"
                         inputProps={{style: {fontSize: 12}}} // font size of input text
                         InputLabelProps={{style: {fontSize: 12}}} // font size of input label
-                        onChange={handleChange}
+                        onChange={handleChangeRasgos}
                         value={rasgos}
                         />
                     </Grid>
@@ -284,7 +323,6 @@ const SimpleForm = () => {
                     </Popover>
                 </ThemeProvider>
                 </Box>
-            </ValidatorForm>
         </div>
     )
 }
