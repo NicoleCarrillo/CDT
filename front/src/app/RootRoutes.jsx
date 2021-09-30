@@ -8,7 +8,7 @@ const redirectRoute = [
     {
         path: '/',
         exact: true,
-        component: () => <Redirect to="/session/signin" />,
+        component: () => <Redirect to="/forms/basic" />,
     },
 ]
 

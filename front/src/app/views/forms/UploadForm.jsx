@@ -12,6 +12,7 @@ import Typography from '@mui/material/Typography';
 import { createTheme, ThemeProvider, withStyles } from '@material-ui/core/styles';
 import Box from '@mui/material/Box';
 import api from 'app/services/api';
+import SimpleForm from '../material-kit/forms/SimpleForm';
 
 let jsondata;
 
@@ -118,6 +119,9 @@ const UploadForm = () => {
     
     return (
         <div className="m-sm-30">
+            <SimpleCard title="Denunciar">
+                <SimpleForm></SimpleForm>
+            </SimpleCard>
             <SimpleCard title="Requisitos">
                     <Grid container spacing={6}>
                         <Grid item lg={6} md={6} sm={12} xs={6}>
@@ -194,7 +198,6 @@ const UploadForm = () => {
                     </Grid>
                 </Grid> 
             </SimpleCard>
-
         </div>
     )
 }
