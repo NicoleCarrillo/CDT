@@ -17,7 +17,7 @@ const NotFound = () => {
                         variant="contained"
                         color="primary"
                     >
-                        Back to Dashboard
+                        Back to SignIn
                     </Button>
                 </Link>
             </div>
