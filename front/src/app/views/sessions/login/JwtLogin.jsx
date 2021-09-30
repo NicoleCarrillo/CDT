@@ -31,7 +31,6 @@ const useStyles = makeStyles(({ palette, ...theme }) => ({
 
 const JwtLogin = () => {
     const [loading, setLoading] = useState(false)
-    const [message, setMessage] = useState('')
     const classes = useStyles()
 
     const handleFormSubmit = async (event) => {
@@ -40,7 +39,6 @@ const JwtLogin = () => {
             history.push('/forms/basic')
         } catch (e) {
             console.log(e)
-            setMessage(e.message)
             setLoading(false)
         }
     }
