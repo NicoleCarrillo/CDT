@@ -48,7 +48,7 @@ const useStyles = makeStyles(({ palette, ...theme }) => ({
 const Layout1Sidenav = () => {
     const theme = useTheme()
 
-    const { settings, updateSettings } = useSettings()
+    const { settings} = useSettings()
 
     const leftSidebar = settings.layout1Settings.leftSidebar
     const { mode } = leftSidebar

@@ -2,7 +2,6 @@ import React, { useState } from 'react'
 import {
     TextField,
     Icon,
-    Button,
     StepLabel,
     Step,
     Stepper,
@@ -50,25 +49,29 @@ function getStepContent(stepIndex, value) {
                     </Grid>
                 </form>
             )
-    }
+        default:
+            console.log("hey")
+        }
 }
 
 export default function HorizontalStepper() {
-    const [activeStep, setActiveStep] = useState(0)
-    const [value, setValue] = useState(2)
+    // const [activeStep, setActiveStep] = useState(0)
+    // const [value, setValue] = useState(2)
+    const [activeStep] = useState(0)
+    const [value] = useState(2)
     const steps = getSteps()
 
-    const handleNext = () => {
-        setActiveStep((prevActiveStep) => prevActiveStep + 1)
-    }
+    // const handleNext = () => {
+    //     setActiveStep((prevActiveStep) => prevActiveStep + 1)
+    // }
 
-    const handleBack = () => {
-        setActiveStep((prevActiveStep) => prevActiveStep - 1)
-    }
+    // const handleBack = () => {
+    //     setActiveStep((prevActiveStep) => prevActiveStep - 1)
+    // }
 
-    const handleReset = () => {
-        setActiveStep(0)
-    }
+    // const handleReset = () => {
+    //     setActiveStep(0)
+    // }
 
     return (
         <div>

@@ -67,6 +67,7 @@ const JwtLogin = () => {
                 <Grid container>
                     <Grid item lg={12} md={12} sm={12} xs={12}>
                         <img
+                            alt="description"
                             class="w-300 justify-center h-full"
                             src="/assets/images/logos/LogoCDT.png"
                             text-align= "center"

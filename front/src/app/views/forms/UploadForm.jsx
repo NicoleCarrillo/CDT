@@ -1,14 +1,9 @@
 import React, { useState, useEffect } from 'react'
 import { SimpleCard} from 'app/components'
-import clsx from 'clsx'
 import {
     Button,
     Icon,
     Grid,
-    Radio,
-    RadioGroup,
-    FormControlLabel,
-    Checkbox,
 } from '@material-ui/core'
 import HorizontalStepper from './HorizontalStepper'
 import { ValidatorForm, TextValidator } from 'react-material-ui-form-validator'
@@ -89,7 +84,6 @@ const UploadForm = () => {
                                 type="search"
                                 variant="filled"
                                 className="mb-4 w-full"
-                                label="ID"
                                 onChange={handleChange}
                                 name="ID"
                                 value={ID}

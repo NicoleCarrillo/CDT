@@ -6,7 +6,6 @@ import {
 } from '@material-ui/core'
 import { makeStyles, useTheme } from '@material-ui/core/styles'
 import clsx from 'clsx'
-import useAuth from 'app/hooks/useAuth'
 import useSettings from 'app/hooks/useSettings'
 
 const useStyles = makeStyles(({ palette, ...theme }) => ({
@@ -58,7 +57,6 @@ const Layout1Topbar = () => {
     const theme = useTheme()
     const classes = useStyles()
     const { settings, updateSettings } = useSettings()
-    const { logout, user } = useAuth()
     const isMdScreen = useMediaQuery(theme.breakpoints.down('md'))
     const fixed = settings?.layout1Settings?.topbar?.fixed
 
