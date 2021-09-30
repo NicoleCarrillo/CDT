@@ -24,7 +24,7 @@ import TextField from '@mui/material/TextField';
 import Brown from '@material-ui/core/colors/brown';
 import Popover from '@mui/material/Popover';
 import Typography from '@mui/material/Typography';
-import api from 'app/services/api';
+import api2 from 'app/services/api2';
 
 const theme = createTheme({
     palette: {
@@ -55,16 +55,14 @@ const SimpleForm = () => {
         }
         let url = "/putComplain?tipo_delito="+delito+"&desc="+descripcion+"&id_carpeta=7&ubicacion="+ubicacion+"&fecha=2021-09-1 06:06:06"+"&nombre_sospechoso="+nombreSospechoso+"&apellido_sospechoso="+apellido+"&desc_sospechoso="+rasgos+"&aka=" + alias;
         console.log(url);
-        // api.put(url)
-        //     .then(response => {
-        //         setData(response.data);
-        //         console.log(data);
-        //     })
-        //     .catch(error => {
-        //         console.error("error fecthing");
-        // })
-        console.log(delito);
-        console.log(descripcion);
+        api2.put(url)
+            .then(response => {
+                setData(response.data);
+                console.log(data);
+            })
+            .catch(error => {
+                console.error("error fecthing");
+        })
     };
 
     const handleClose = () => {
@@ -319,7 +317,7 @@ const SimpleForm = () => {
                         onClose={handleClose}
                         style ={ {top:'700px',left:'650px'}}
                     >
-                    <Typography sx={{ p: 1 }} style ={ {fontSize:20}}>Your ID:{randomV}, Your PASSWORD:{randomC}</Typography>
+                    <Typography sx={{ p: 1 }} style ={ {fontSize:20}}>Your ID:{data == null ? "intente de nuevo" : data.idDenuncia}, Your PASSWORD:{randomC}</Typography>
                     </Popover>
                 </ThemeProvider>
                 </Box>
